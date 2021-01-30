@@ -17,6 +17,19 @@ export default {
         href:
           'https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css',
+      },
+    ],
+    script: [
+      {
+        hid: 'stripe',
+        src:
+          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js',
+        defer: true,
+      },
     ],
   },
 
