@@ -1,20 +1,11 @@
-# nuxt-typescript
+# Practice make perfect
 
-## Build Setup
+This is a practice project that I have created for play around Nuxt.js and Typescript by made mini projects in this project,
 
-```bash
-# install dependencies
-$ npm install
+## Mini project
+1. Todolist
+2. Calculator
+3. Tictactoe game
 
-# serve with hot reload at localhost:3000
-$ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+© 2021, mnagon
