@@ -18,13 +18,91 @@
         <nuxt-link to="/tictactoe"> Tictactoe</nuxt-link>
       </li>
     </ul>
+    <div>
+      <h2>Practice area</h2>
+      <p>
+        {{ title }}
+      </p>
+      <p>
+        {{ num }}
+      </p>
+      <p>
+        {{ userInfo }}
+      </p>
+      <TypescriptProp :user="user" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import TypescriptProp from '~/components/TypescriptProps.vue'
 
-export default Vue.extend({})
+interface User {
+  name: string
+  age: number
+  favorite: string[]
+}
+
+interface State {
+  title: string
+  num: number
+  user: User
+}
+
+export default Vue.extend({
+  components: {
+    TypescriptProp,
+  },
+  data(): State {
+    return {
+      title: 'Here is how we set the type for vue state',
+      num: 0,
+      user: {
+        name: 'mnagon',
+        age: 27,
+        favorite: ['codeing', 'game'],
+      },
+    }
+  },
+
+  computed: {
+    userInfo(): string {
+      const favorite: string = this.user.favorite.join(', ')
+      return (
+        this.user.name +
+        ': ' +
+        this.user.age +
+        ' year old and favorite for ' +
+        favorite
+      )
+    },
+    computedTitle: {
+      get(): string {
+        return this.title + 'eiei'
+      },
+      set(val: string): void {
+        this.title = val
+      },
+    },
+  },
+
+  watch: {
+    title(): void {
+      this.num += 1
+    },
+  },
+
+  mounted() {
+    this.getAndSetComputedTitle()
+  },
+
+  methods: {
+    getAndSetComputedTitle(): void {
+      this.computedTitle = 'Test computed set function'
+    },
+  },
+})
 </script>
 
 <style scoped>
