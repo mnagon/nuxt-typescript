@@ -23,6 +23,7 @@
       <p>
         {{ title }}
       </p>
+
       <p>
         {{ num }}
       </p>
@@ -38,6 +39,8 @@
 import Vue from 'vue'
 import TypescriptProp from '~/components/TypescriptProps.vue'
 
+const boo: (string | boolean)[] = ['yes', true, 'something', false]
+
 interface User {
   name: string
   age: number
@@ -48,6 +51,7 @@ interface State {
   title: string
   num: number
   user: User
+  boo: (string | boolean)[]
 }
 
 export default Vue.extend({
@@ -58,6 +62,7 @@ export default Vue.extend({
     return {
       title: 'Here is how we set the type for vue state',
       num: 0,
+      boo,
       user: {
         name: 'mnagon',
         age: 27,
@@ -95,6 +100,7 @@ export default Vue.extend({
 
   mounted() {
     this.getAndSetComputedTitle()
+    console.log(this.boo)
   },
 
   methods: {
