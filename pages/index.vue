@@ -18,7 +18,7 @@
         <nuxt-link to="/tictactoe"> Tictactoe</nuxt-link>
       </li>
     </ul>
-    <div>
+    <div class="practice-area">
       <h2>Practice area</h2>
       <p>
         {{ title }}
@@ -30,6 +30,7 @@
       <p>
         {{ userInfo }}
       </p>
+      <p>email {{ email }}</p>
       <TypescriptProp :user="user" />
     </div>
   </div>
@@ -38,8 +39,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import TypescriptProp from '~/components/TypescriptProps.vue'
-
-const boo: (string | boolean)[] = ['yes', true, 'something', false]
 
 interface User {
   name: string
@@ -51,7 +50,6 @@ interface State {
   title: string
   num: number
   user: User
-  boo: (string | boolean)[]
 }
 
 export default Vue.extend({
@@ -62,7 +60,6 @@ export default Vue.extend({
     return {
       title: 'Here is how we set the type for vue state',
       num: 0,
-      boo,
       user: {
         name: 'mnagon',
         age: 27,
@@ -72,6 +69,12 @@ export default Vue.extend({
   },
 
   computed: {
+    email(): string {
+      return this.$accessor.email
+    },
+    firstName(): string {
+      return this.$accessor.submodule.firstName
+    },
     userInfo(): string {
       const favorite: string = this.user.favorite.join(', ')
       return (
@@ -100,7 +103,6 @@ export default Vue.extend({
 
   mounted() {
     this.getAndSetComputedTitle()
-    console.log(this.boo)
   },
 
   methods: {
@@ -114,5 +116,12 @@ export default Vue.extend({
 <style scoped>
 a {
   text-decoration: none;
+}
+
+.practice-area {
+  margin-top: 36px;
+  padding: 8px 16px 16px 16px;
+  border: solid 2px;
+  border-radius: 10px;
 }
 </style>
