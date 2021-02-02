@@ -1,6 +1,6 @@
 # Practice make perfect
 
-This is a practice project that I have created for play around Nuxt.js and Typescript by made mini projects in this project,
+This is a practice repo that I have created for play around Nuxt.js and Typescript by made mini projects in this project,
 
 ## Mini project
 
