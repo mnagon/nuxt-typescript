@@ -1,41 +1,29 @@
-import { getAccessorType, mutationTree, actionTree } from 'nuxt-typed-vuex'
-import { Context } from '@nuxt/types'
+import {
+  getAccessorType,
+  getterTree,
+  mutationTree,
+  actionTree,
+} from 'nuxt-typed-vuex'
 
-import * as submodule from './submodule'
+import * as todo from './todo'
 
-export const state = () => ({
-  email: 'Fuck you i fogot toin clude email ??',
-})
-
-type RootState = ReturnType<typeof state>
-
-export const getters = {
-  email: (state: RootState) => state.email,
-  fullEmail: (state: RootState) => state.email,
+interface State {
+  message: string
 }
 
-export const mutations = mutationTree(state, {
-  setEmail(state, newValue: string) {
-    state.email = newValue
-  },
-
-  initialiseStore() {
-    console.log('initialised')
-  },
+export const state = (): State => ({
+  message: 'some message here',
 })
 
-export const actions = actionTree(
-  { state, getters, mutations },
-  {
-    resetEmail({ commit }) {
-      commit('setEmail', 'a@a.com')
-    },
+// type RootState = ReturnType<typeof state>
 
-    nuxtServerInit(_vuexContext, nuxtContext: Context) {
-      console.log(nuxtContext.req)
-    },
-  }
-)
+export const getters = getterTree(state, {
+  getMessage: (state): string => 'Message: ' + state.message,
+})
+
+export const mutations = mutationTree(state, {})
+
+export const actions = actionTree({ state, getters, mutations }, {})
 
 export const accessorType = getAccessorType({
   actions,
@@ -43,6 +31,6 @@ export const accessorType = getAccessorType({
   mutations,
   state,
   modules: {
-    submodule,
+    todo,
   },
 })

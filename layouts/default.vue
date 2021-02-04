@@ -2,7 +2,7 @@
   <div>
     <nav>
       <nuxt-link to="/"> Home</nuxt-link>
-      <nuxt-link to="/todolist"> Todolist</nuxt-link>
+      <nuxt-link to="/todo"> Todolist</nuxt-link>
       <nuxt-link to="/calculator"> Calculator</nuxt-link>
       <nuxt-link to="/tictactoe"> Tictactoe</nuxt-link>
     </nav>
